@@ -37,7 +37,7 @@ router.get('/:action', async (req, res) => {
         !user && (user = "minlaxz")
         !branch && (branch = "main")
         !repo && res.status(400).json({ message: "repo is required" });
-        const url = `https://api.github.com/repos/${user}/${repo}/commits?sha=${branch}`
+        const url = `https://api.github.com/repos/${user}/${repo}/branches/${branch}`
         const response = await axios.get(url, {
             headers: { 'User-Agent': 'curl/7.68.0' }
         })
@@ -46,7 +46,7 @@ router.get('/:action', async (req, res) => {
                 ghUser: user,
                 ghRepo: repo,
                 ghBranch: branch,
-                data: response.data[0].sha
+                data: response.data.commit.sha
             }
             res.status(200).json(returnBody)
         } else {
