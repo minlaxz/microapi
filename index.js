@@ -25,6 +25,7 @@ app.get(`${base}${apiVersion}/doc`, async (req, res) => {
 
 app.use(`${base}${apiVersion}/github`, githubRoute);
 
+
 app.get("*", async (req, res) => {
     res.status(404).send('Not Found');
 });
