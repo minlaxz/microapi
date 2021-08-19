@@ -8,7 +8,7 @@ const base = '/api';
 const apiVersion = '/v1';
 
 app.get('/', cors(), async (req, res) => {
-    res.status(200).send('Hello World!');
+    res.status(200).send('Hello, World!');
 });
 
 app.get(`${base}`, async (req, res) => {
